@@ -51,12 +51,22 @@ module.exports = (_, argv) => ({
         use: ["style-loader", "css-loader", "postcss-loader"],
       },
       {
-        test: /\.(ts|tsx|js|jsx)$/,
+        test: /\.(ts|tsx)$/,
         exclude: /node_modules/,
         use: {
           loader: "babel-loader",
         },
       },
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            configFile: path.resolve(__dirname, '.babelrc')
+          }
+        },
+      }
     ],
   },
 
@@ -64,7 +74,9 @@ module.exports = (_, argv) => ({
     new ModuleFederationPlugin({
       name: "fidgety_details",
       filename: "remoteEntry.js",
-      remotes: {},
+      remotes: {
+        'fidgety_home': 'fidgety_home@http://localhost:8080/remoteEntry.js',
+      },
       exposes: {},
       shared: {
         ...deps,
