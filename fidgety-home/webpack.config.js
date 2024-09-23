@@ -65,7 +65,10 @@ module.exports = (_, argv) => ({
       name: "fidgety_home",
       filename: "remoteEntry.js",
       remotes: {},
-      exposes: {},
+      exposes: {
+        './Header': './src/shared/Header.jsx',
+        './Footer': './src/shared/Footer.jsx',
+      },
       shared: {
         ...deps,
         react: {
