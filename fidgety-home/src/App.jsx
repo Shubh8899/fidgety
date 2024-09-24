@@ -8,7 +8,7 @@ import Footer from "../../fidgety-home/src/shared/Footer";
 
 const App = () => (
   <div className="text-3xl mx-auto max-w-6xl">
-  <Header/>
+  <Header app={{ name: 'home' }}/>
   <div className="text-xl">Home Content</div>
   <Footer/>
   </div>
