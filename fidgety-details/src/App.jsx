@@ -5,10 +5,14 @@ import "./index.scss";
 // import 'tailwindcss/tailwind.css'; 
 import Header from "fidgety_home/Header";
 import Footer from "fidgety_home/Footer";
+import SafeComponent from "./SafeComponent";
 
 const App = () => (
   <div className="text-3xl mx-auto max-w-6xl">
-    <Header/>
+    <SafeComponent>
+      <Header />
+    </SafeComponent>
+      
     <div>Details Content</div>
     <Footer/>
   </div>
